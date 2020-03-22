@@ -104,7 +104,7 @@ function train() {
 
       total_E += 0.5 * Math.pow(outputDiff, 2);
 
-      //Výpočet pro nové váhy.
+      //Zpětný výpočet pro nové váhy.
       let E_o_out_o = out_o - inputData[i].expectedValue;
 
       let out_o_net_o = out_o * (1 - out_o);

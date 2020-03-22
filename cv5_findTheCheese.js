@@ -18,7 +18,6 @@ export function cv5FindTheCheese() {
 }
 
 function doTheWork() {
-  //asi training???
   for (let x = 0; x < 20; x++) {
     let startingRow = 0; // row 0 je coord 0,0 kdyby row = 7 tak coord je 1, 2
 
