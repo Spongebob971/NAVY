@@ -1,0 +1,60 @@
+Založené na pohybu mravenců (ti se orientují podle feromonové stopy)
+feromony jsou uložené ve formě matice (normálně jak u TSP) - na začátku všude 1
+
+Pro TSP:
+    každý mravenec by měl vždycky začínat v jiném městě
+    pro každé město vypočtu pravděpodobnost a podle ní se každý mravenec někam posune
+    každý mravenec má visibility matrix - určuje kam ještě se může posnout (obsahuje pravděpodobnosti)
+        dá se to dělat i bez nějaké jeblé matice
+    mravenec se nesmí zpátky dostat do města, ve kterém už byl (až úplně na konci)
+
+    Výpočet trajektorie mravence:
+        U každého pohybu mravence vypočtu pravděpodobnosti pro pohyb do všech měst:
+        Součet všech těch hodnot by měl být = 1
+        Vypočtu z toho kumulativní pravděpodobnost (tajak ruleta) - tím určím jedno konkrétní město pro pohyb
+        Opakuju s tím, že mám vždy o jedno město míň
+
+        tau(r,s)^alfa - pravděpodobnost (feromony) mezi vrcholy R a S (hodnota z matice)
+        ni(r,s)^beta - vzdálenost mezi R,S (tež z matice, ale z matice vzdáleností)
+
+    Každý mravenec má svoji trajektorii -> přepočet feromonů
+
+    Přepočet feromonů - 2 způsoby - přepočet hned po pohybu nebo až když všichni dojdou do cíle (máme dělat to druhé)
+        Vaporizace: simuluje vypařování feromonů (děje se na všech hranách stejně)
+        U každé hrany odečtu vaporizaci a přičtu nějaký součet toho, kolik mravenců tu hranu použilo
+
+Parametry:
+    Alfa - udává vliv feromonů na výpočet
+    Beta - vliv vzdálenosti na výpočet
+
+
+__Cviko__:
+    - počáteční pozice mravenců generovat náhodně
+    - mravenec si volí cestu podle
+        feromonů (předchozí četnost průchodů cestou)
+        prostředí (ohodnocení cesty - např. vzdálenost)
+    - parametry:
+        alfa - váha feromonů ve výpočtu
+        beta - váha prostředí při výpočtu
+    - pro každý vrchol si každý mravenec z těchle hodnot vypočte pravděpodobnost, že do něj půjde
+        u prostředí se musí brát převrácená hodnota (bo nižší vzdálenost = lepší ohodnocení)
+        ohodnocení cesty = (feromonyCesty^alfa) * (delkaCesty^beta)
+        normalizovane ohodnoceni - ohodnoceniCesty / soucetVsechOhodnoceni
+    
+    - pokládání feromonů:
+        - nejvíce feromonů příjde na nejkratší cestu
+        - Q - celkové množství feromonů, které může mravenec roznést na jedné cestě
+        - hodnota feromonu, kterou mravenec položí na hranu: Q / D (D - vzdálenost celé jeho cesty)
+        
+        Odpařování feromonů:
+            - ró - určuje jak rychle se odpařují z hran
+            - po každé iteraci se před přidáním nových feromonů odpaří část těch starých
+            feromonyPoOdpareni = feromony * ró
+        feromonyCesty = feromonyPoOdpareni + feromonyOdMravencu
+
+        Dát si pozor ať se nikde nedostane feromon přímo na 0 (jinak se už nemá jak dostat zpátky)
+
+    TSP:
+        mravenec nesmí v jedné iteraci navštívit stejný vrchol 2x (až na konci)
+            - postupně odebírat navštívené vrcholy
+        minimalizuje se celková délka cesty kterou mravenec ušel

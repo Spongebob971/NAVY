@@ -1,0 +1,44 @@
+Linearne nesepparabilni problemy
+
+pomoci vice perceptoru(lines)
+
+y - y_guess na druhou ... to nadruhou je jen proto abzch se zbavil znamenka, jde mi jen o tu velikost erroru
+
+gradient = smer nejvyssiho narustu funkce v danem bode
+
+budu hledat gradient erroru (a ten solvovat) ===> tim bude klesat chybovost
+
+
+
+zajima me jak moc se zmeni chyba pri velmi male zmene vahy.
+
+Jak na to::
+
+
+
+
+v referencich je to podrobneni i s dosazenim do vzorce.
+
+net .. .dotproduct
+out je sigmoida
+
+d_E_total / d_w5 = d_E_total/ d_out_O1
+
+
+ukol: neuronova sit kter pro dane vstupy bude hazet pripadne vystupy (XOR styl)
+
+rardek * sloupec = skalar (musim to delat takto ne naopak)
+slouipec * radek = matice
+
+BACHA NA TOOO
+
+
+
+i1---------h1
+   *      .  *      
+      *.        *.O  
+   .    *     . 
+i2--------h2
+
+
+TIP : dervicace smernice tenych v danem bode

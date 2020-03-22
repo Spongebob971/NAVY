@@ -1,0 +1,33 @@
+
+
+MOO - multi objective optimilisation
+
+paretova mnozina (paretovy linie) - soustava bodu viz obrazek: https://www.mmspektrum.com/clanek/prezentace-vysokych-skol-na-imt-2006.html
+                                    (my budeme hledat pouze prvni paretovou linii.)
+
+
+
+udelam paretovou lini a pak se setridi
+
+z obrazku: 3F1(bod 3 fitness 1) = ((F2 * F1) - (F4F1)) / (F_maxF1 - F_minF1) // nejlepsi vysledky jsou ty ktere maji nejvetsi cislo
+
+
+paretova linie:
+
+1. krok  linie je prazdna, dame tam jen tak prvni parLinie = {a,};
+2. krok najdu neco lepsiho napr b(jestli b dominuje a)? prepsat a na b : nic;
+
+
+pokud neco z paretove linie dominuje tomu vybranemu, tak ten vybrany nemuzeme pridat,
+
+pokud neco z paretove linie nedominuje tomu vybranemu, ten muzeme pridat
+
+pokud ten vybrany dominuje nejakemu prvku z paretove linie, tak ten prepisu na ten bod treba: 
+
+na domu udelat trizeni pouze, paretovka();
+
+udelat vsechny, ne jen prvni paretovou linii
+
+CROWDED DISTANCE =
+C = (predchozibod - nasledujici) / (nejvetsi-nejmensi)
+
