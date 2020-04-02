@@ -54,18 +54,20 @@ var pathArray = [];
 
 export function cv7doTheWork() {
   // switch axiom rule and angle to obtain different pattern.
-  let axiom = axiom4;
-  let rule = axiomRule4;
-  let axiomAngle = axiomAngle4;
+  let axiom = axiom1;
+  let rule = axiomRule1;
+  let axiomAngle = axiomAngle1;
 
   let arrayWithReplacedFs = axiom;
   let result = [];
 
-  let iterations = 3;
-  // change value of iterations so result is much more detailed.
+  let iterations = 3; // change value of iterations so result is much more or less detailed.
+
   for (let i = 0; i < iterations; i++) {
+    // replace each F with predefined rules.
     arrayWithReplacedFs = replaceFs(arrayWithReplacedFs, rule);
 
+    // compute path (pattern) with array with already modified array.
     result = computePath(arrayWithReplacedFs, axiomAngle);
   }
 
@@ -105,11 +107,12 @@ function replaceFs(arrayToReplace, replacingArray) {
 }
 
 function computePath(array, angle) {
-  let degree = 90;
-  let angleToRemember = [];
+  let degree = 90; // init degree(90 bcs sin 90 = 1)
+  let angleToRemember = []; // when "[" occurs, angle needs to be remembered.
   let temporaryPath2 = []; // when "[" occurs, push to result Array points from returnPath that contains same points after "[" but backwards. All that action so graph won't be damaged.
-  let result = [];
+  let result = []; // final array for graph to display.
 
+  //starting point at 10,10.
   let newPoint = {
     x: 10,
     y: 10
@@ -130,11 +133,11 @@ function computePath(array, angle) {
         temporaryPath2[temporaryPath2.length - 1].push(newPoint);
       }
     } else if (element == "+") {
-      degree += angle;
-      degree = degree > 360 ? degree - 360 : degree;
+      degree += angle; // adding angle
+      degree = degree > 360 ? degree - 360 : degree; // handling degrees in <0,360)
     } else if (element == "-") {
-      let newDegree = degree - angle;
-      degree = newDegree < 0 ? 360 + newDegree : newDegree;
+      let newDegree = degree - angle; // removing angle
+      degree = newDegree < 0 ? 360 + newDegree : newDegree; // handling degrees in <0,360)
     } else if (element == "[") {
       let tmp = result[result.length - 1];
 
@@ -145,21 +148,19 @@ function computePath(array, angle) {
       temporaryPath2.push([]);
 
       temporaryPath2[temporaryPath2.length - 1].push(tmp);
-
-      console.log(temporaryPath2);
     } else if (element == "]") {
       degree = angleToRemember[angleToRemember.length - 1];
 
       angleToRemember.pop();
 
-      temporaryPath2[temporaryPath2.length - 1]
+      temporaryPath2[temporaryPath2.length - 1] // adding points from branches to result backwards.(has to be done so graph is looking magnificent.)
         .slice()
         .reverse()
         .forEach(elementReversePath => {
           result.push(elementReversePath);
         });
 
-      newPoint = result[result.length - 1]; // newPoint je actual point od ktere se pak pokracuje, proto musi byt posledni bod z result newPoint
+      newPoint = result[result.length - 1];
 
       temporaryPath2.pop();
     }
