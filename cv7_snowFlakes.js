@@ -54,9 +54,9 @@ var pathArray = [];
 
 export function cv7doTheWork() {
   // switch axiom rule and angle to obtain different pattern.
-  let axiom = axiom1;
-  let rule = axiomRule1;
-  let axiomAngle = axiomAngle1;
+  let axiom = axiom4;
+  let rule = axiomRule4;
+  let axiomAngle = axiomAngle4;
 
   let arrayWithReplacedFs = axiom;
   let result = [];
