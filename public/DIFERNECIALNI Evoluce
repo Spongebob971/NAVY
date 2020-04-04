@@ -1,0 +1,19 @@
+podobna Geneticke evoluci
+
+tady je mutace pred krizenim, je to tady obracene (napred mutace, pak krizeni)
+
+jakym zpusobem jsou vybirani rodice ??  == P1,P2, P3 (P1 => random nebo best, P2 je random, P3 je random);
+
+z tech 1,2,3 se vygeneruje noise vector;
+
+F = 0.3 az 0.8 doporucena hodnota
+
+N(noise) = 1 + F * (P2 - P3);
+
+jakmile mam nosie ,musim udelat trial vektor
+(davam dohromody Aktivniho jedince a noise);
+
+
+
+
+
