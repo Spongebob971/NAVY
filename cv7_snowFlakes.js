@@ -52,16 +52,23 @@ let axiomAngle4 = 180 / 8;
 
 var pathArray = [];
 
-export function cv7doTheWork() {
+let axiom = axiom1;
+let rule = axiomRule1;
+let axiomAngle = axiomAngle1;
+
+export function cv7doTheWork(iterationValue, patternValue) {
   // switch axiom rule and angle to obtain different pattern.
-  let axiom = axiom1;
-  let rule = axiomRule1;
-  let axiomAngle = axiomAngle1;
+
+  pathArray = [];
+
+  console.log(iterationValue, patternValue);
+
+  choosePattern(patternValue);
 
   let arrayWithReplacedFs = axiom;
   let result = [];
 
-  let iterations = 3; // change value of iterations so result is much more or less detailed.
+  let iterations = iterationValue; // change value of iterations so result is much more or less detailed.
 
   for (let i = 0; i < iterations; i++) {
     // replace each F with predefined rules.
@@ -76,6 +83,32 @@ export function cv7doTheWork() {
   });
 
   draw();
+}
+
+function choosePattern(patternNumber) {
+  switch (patternNumber) {
+    case 1:
+      axiom = axiom1;
+      rule = axiomRule1;
+      axiomAngle = axiomAngle1;
+      break;
+
+    case 2:
+      axiom = axiom2;
+      rule = axiomRule2;
+      axiomAngle = axiomAngle2;
+      break;
+    case 3:
+      axiom = axiom3;
+      rule = axiomRule3;
+      axiomAngle = axiomAngle3;
+      break;
+    case 4:
+      axiom = axiom4;
+      rule = axiomRule4;
+      axiomAngle = axiomAngle4;
+      break;
+  }
 }
 
 function replaceFs(arrayToReplace, replacingArray) {

@@ -19,9 +19,32 @@ import { cv7doTheWork } from "./cv7_snowFlakes.js";
 //paretovka();
 
 ///NAVY///////////////
+//var iterations = document.getElementById("IterationsId");
+//var iterationValue = iterations.options[iterations.selectedIndex].value;
+
+document.getElementById("SnowflakesPatternsId").onchange = function() {
+  cv7ListenerFunction();
+};
+
+document.getElementById("IterationsId").onchange = function() {
+  cv7ListenerFunction();
+};
+
+document.getElementById("XorBtn").onclick = function() {
+  cv3XorDoTheWork();
+};
 
 //perceptron();
 //cv3XorDoTheWork();
 //cv4HopfieldNetwork();
 //cv5FindTheCheese();
-cv7doTheWork();
+
+function cv7ListenerFunction() {
+  var patterns = document.getElementById("SnowflakesPatternsId");
+  var selectedPattern = patterns.selectedIndex;
+
+  var interations = document.getElementById("IterationsId");
+  var amountOfIterations = interations.selectedIndex;
+
+  cv7doTheWork(amountOfIterations + 1, selectedPattern + 1);
+}
