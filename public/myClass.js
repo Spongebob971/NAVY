@@ -9,6 +9,7 @@ import { cv3XorDoTheWork } from "./cv3_XOR_neuronka.js";
 import { cv4HopfieldNetwork } from "./cv4HopfieldNetwork.js";
 import { cv5FindTheCheese } from "./cv5_findTheCheese.js";
 import { cv7doTheWork } from "./cv7_snowFlakes.js";
+import { cv8doTheWork } from "./IFS.js";
 
 ///////////////////BIA/////////////////////////////////////////////////////////////
 //Soma;
@@ -22,16 +23,23 @@ import { cv7doTheWork } from "./cv7_snowFlakes.js";
 //var iterations = document.getElementById("IterationsId");
 //var iterationValue = iterations.options[iterations.selectedIndex].value;
 
-document.getElementById("SnowflakesPatternsId").onchange = function() {
-  cv7ListenerFunction();
+document.getElementById("SnowflakesPatternsId").onchange = function () {
+  cv7Prepare();
 };
 
-document.getElementById("IterationsId").onchange = function() {
-  cv7ListenerFunction();
+document.getElementById("IterationsId").onchange = function () {
+  cv7Prepare();
 };
 
-document.getElementById("XorBtn").onclick = function() {
+document.getElementById("XorBtn").onclick = function () {
   cv3XorDoTheWork();
+};
+
+document.getElementById("IFSModel").onclick = function () {
+  var models = document.getElementById("IFSModel");
+  var selectedModel = models.selectedIndex;
+
+  cv8doTheWork(selectedModel);
 };
 
 //perceptron();
@@ -39,7 +47,7 @@ document.getElementById("XorBtn").onclick = function() {
 //cv4HopfieldNetwork();
 //cv5FindTheCheese();
 
-function cv7ListenerFunction() {
+function cv7Prepare() {
   var patterns = document.getElementById("SnowflakesPatternsId");
   var selectedPattern = patterns.selectedIndex;
 
