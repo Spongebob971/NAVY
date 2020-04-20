@@ -10,6 +10,7 @@ import { cv4HopfieldNetwork } from "./cv4HopfieldNetwork.js";
 import { cv5FindTheCheese } from "./cv5_findTheCheese.js";
 import { cv7doTheWork } from "./cv7_snowFlakes.js";
 import { cv8doTheWork } from "./IFS.js";
+import { cv9DoTheWork } from "./TEA.js";
 
 ///////////////////BIA/////////////////////////////////////////////////////////////
 //Soma;
@@ -40,6 +41,10 @@ document.getElementById("IFSModel").onclick = function () {
   var selectedModel = models.selectedIndex;
 
   cv8doTheWork(selectedModel);
+};
+
+document.getElementById("TeaButtonId").onclick = function () {
+  cv9DoTheWork();
 };
 
 //perceptron();
