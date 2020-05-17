@@ -11,6 +11,7 @@ import { cv5FindTheCheese } from "./cv5_findTheCheese.js";
 import { cv7doTheWork } from "./cv7_snowFlakes.js";
 import { cv8doTheWork } from "./IFS.js";
 import { cv9DoTheWork } from "./TEA.js";
+import { forrestFire } from "./fireModel.js";
 
 ///////////////////BIA/////////////////////////////////////////////////////////////
 //Soma;
@@ -45,6 +46,10 @@ document.getElementById("IFSModel").onclick = function () {
 
 document.getElementById("TeaButtonId").onclick = function () {
   cv9DoTheWork();
+};
+
+document.getElementById("ForrestBtnId").onclick = function () {
+  forrestFire();
 };
 
 //perceptron();
